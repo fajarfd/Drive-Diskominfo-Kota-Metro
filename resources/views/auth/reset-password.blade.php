@@ -21,7 +21,35 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            /* Background solid blue */
+            /* Brand Logo (Pojok Kiri Atas) */
+        .brand-logo {
+            position: absolute;
+            top: 14px;
+            left: 32px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .brand-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .brand-logo span {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.6;
+            transform: translateY(2px);
+        }
+
+        /* Container luar */solid blue */
             background: #1b5c96;
             position: relative;
             overflow: hidden;
@@ -61,11 +89,8 @@
             max-width: 400px;
             padding: 45px 38px;
             background: #ffffff;
-            border-radius: 6px;
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.25),
-                0 10px 25px rgba(0, 0, 0, 0.15),
-                0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: none;
         }
 
         .card h2 {
@@ -221,6 +246,10 @@
     </style>
 </head>
 <body>
+    <a href="/" class="brand-logo" aria-label="KOMSAFE Beranda">
+        <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE">
+        <span>KOMSAFE</span>
+    </a>
     <div class="login-wrapper">
         <div class="card">
             <h2>Reset Password</h2>
@@ -236,21 +265,21 @@
                 </div>
             @endif
 
-            <form action="{{ route('password.update') }}" method="POST">
+            <form action="{{ route('password.update') }}" method="POST" autocomplete="off">
                 @csrf
                 <input type="hidden" name="email" value="{{ $email }}">
 
                 <div class="input-group">
                     <label>Kode Verifikasi</label>
-                    <input type="text" name="code" class="code-input" placeholder="------" maxlength="6" required autofocus>
+                    <input type="text" name="code" class="code-input" placeholder="------" maxlength="6" required autofocus autocomplete="off">
                 </div>
                 <div class="input-group">
                     <label>Password Baru</label>
-                    <input type="password" name="password" placeholder="Masukkan password baru" required>
+                    <input type="password" name="password" placeholder="Masukkan password baru" required autocomplete="new-password">
                 </div>
                 <div class="input-group">
-                    <label>Konfirmasi Password Baru</label>
-                    <input type="password" name="password_confirmation" placeholder="Ulangi password baru" required>
+                    <label>Ulangi Password Baru</label>
+                    <input type="password" name="password_confirmation" placeholder="Konfirmasi password baru" required autocomplete="new-password">
                 </div>
                 <button type="submit" class="btn-submit">Reset Password</button>
             </form>

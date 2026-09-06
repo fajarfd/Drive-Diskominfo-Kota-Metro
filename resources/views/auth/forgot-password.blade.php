@@ -60,11 +60,18 @@
             max-width: calc(100vw - 32px);
             padding: 32px 30px 16px;
             background: #ffffff;
-            border-radius: 0;
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.25),
-                0 10px 25px rgba(0, 0, 0, 0.15),
-                0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: none;
+        }
+
+        .brand-logo span {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.6;
+            transform: translateY(2px);
         }
 
         .card h2 {
@@ -203,6 +210,10 @@
     </style>
 </head>
 <body>
+    <a href="/" class="brand-logo" aria-label="KOMSAFE Beranda">
+        <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE">
+        <span>KOMSAFE</span>
+    </a>
     <div class="login-wrapper">
         <div class="card">
             <h2>Lupa Password</h2>
@@ -216,11 +227,11 @@
                 <div class="error">{{ $errors->first() }}</div>
             @endif
 
-            <form action="{{ route('password.email') }}" method="POST">
+            <form action="{{ route('password.email') }}" method="POST" autocomplete="off">
                 @csrf
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required>
+                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required autocomplete="off">
                 </div>
                 <button type="submit" class="btn-submit">Kirim Kode Verifikasi</button>
             </form>

@@ -52,6 +52,34 @@
             pointer-events: none;
         }
 
+        /* Brand Logo (Pojok Kiri Atas) */
+        .brand-logo {
+            position: absolute;
+            top: 14px;
+            left: 32px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .brand-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .brand-logo span {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.6;
+            transform: translateY(2px);
+        }
+
         /* Container luar — efek timbul kuat */
         .login-wrapper {
             position: relative;
@@ -63,12 +91,8 @@
             max-width: calc(100vw - 32px);
             padding: 32px 30px 16px;
             background: #ffffff;
-            border-radius: 0;
-            /* Shadow kuat untuk efek timbul seperti referensi */
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.25),
-                0 10px 25px rgba(0, 0, 0, 0.15),
-                0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: none;
         }
 
         .card h2 {
@@ -83,7 +107,7 @@
             font-size: 13px;
             color: #555555;
             text-align: center;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
         }
 
         .error {
@@ -110,7 +134,7 @@
         }
 
         .input-group {
-            margin-bottom: 18px;
+            margin-bottom: 14px;
         }
 
         .input-group label {
@@ -123,7 +147,7 @@
 
         .input-group input {
             width: 100%;
-            height: 52px;
+            height: 42px;
             padding: 0 16px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
@@ -153,7 +177,7 @@
 
         .btn-register {
             width: 100%;
-            height: 40px;
+            height: 44px;
             padding: 0;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
@@ -211,6 +235,10 @@
     </style>
 </head>
 <body>
+    <a href="/" class="brand-logo" aria-label="KOMSAFE Beranda">
+        <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE">
+        <span>KOMSAFE</span>
+    </a>
     <div class="login-wrapper">
         <div class="card">
             <h2>Buat Akun Baru</h2>
@@ -226,23 +254,23 @@
                 </div>
             @endif
 
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST" autocomplete="off">
                 @csrf
                 <div class="input-group">
                     <label>Nama Lengkap</label>
-                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Masukkan nama lengkap" required>
+                    <input type="text" name="name" value="{{ old('name') }}" placeholder="Masukkan nama lengkap" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
                 </div>
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email" required>
+                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
                 </div>
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" name="password" placeholder="Masukkan password" required>
+                    <input type="password" name="password" placeholder="Masukkan password" required autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');">
                 </div>
                 <div class="input-group">
                     <label>Ulangi Password</label>
-                    <input type="password" name="password_confirmation" placeholder="Konfirmasi password" required>
+                    <input type="password" name="password_confirmation" placeholder="Konfirmasi password" required autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');">
                 </div>
                 <button type="submit" class="btn-register">Daftar</button>
             </form>

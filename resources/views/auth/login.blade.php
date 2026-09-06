@@ -66,6 +66,34 @@
             pointer-events: none;
         }
 
+        /* Brand Logo (Pojok Kiri Atas) */
+        .brand-logo {
+            position: absolute;
+            top: 14px;
+            left: 32px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .brand-logo img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .brand-logo span {
+            font-size: 17px;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.6;
+            transform: translateY(2px);
+        }
+
         /* Container luar — efek timbul kuat */
         .login-wrapper {
             position: relative;
@@ -77,12 +105,8 @@
             max-width: calc(100vw - 32px);
             padding: 32px 30px 16px;
             background: #ffffff;
-            border-radius: 0;
-            /* Shadow kuat untuk efek timbul seperti referensi */
-            box-shadow:
-                0 25px 60px rgba(0, 0, 0, 0.25),
-                0 10px 25px rgba(0, 0, 0, 0.15),
-                0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: none;
         }
 
         .card h2 {
@@ -268,19 +292,23 @@
     </style>
 </head>
 <body>
+    <a href="/" class="brand-logo" aria-label="KOMSAFE Beranda">
+        <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE">
+        <span>KOMSAFE</span>
+    </a>
     <div class="login-wrapper">
         <div class="card">
             <h2>Masuk ke Akun</h2>
 
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('login') }}" method="POST" autocomplete="off">
                 @csrf
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email" required>
+                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
                 </div>
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" name="password" placeholder="Masukkan password" required>
+                    <input type="password" name="password" placeholder="Masukkan password" required autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');">
                 </div>
                 
                 <div class="error-wrapper">

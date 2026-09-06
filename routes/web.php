@@ -12,8 +12,11 @@ use App\Http\Controllers\TrashController;
 use App\Http\Controllers\BulkActionController;
 
 Route::get('/', function () {
-    return redirect('/login');
-});
+    if (auth()->check()) {
+        return redirect('/dashboard');
+    }
+    return view('landing');
+})->name('landing');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
