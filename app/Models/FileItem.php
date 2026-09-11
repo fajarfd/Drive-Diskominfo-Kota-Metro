@@ -10,7 +10,7 @@ class FileItem extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'folder_id', 'name', 'file_path', 'mime_type', 'size'];
+    protected $fillable = ['user_id', 'folder_id', 'name', 'file_path', 'mime_type', 'size', 'is_archived'];
 
     public function user()
     {

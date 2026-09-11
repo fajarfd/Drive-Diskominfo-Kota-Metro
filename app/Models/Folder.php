@@ -10,7 +10,7 @@ class Folder extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id', 'name', 'parent_id'];
+    protected $fillable = ['user_id', 'name', 'parent_id', 'is_archived'];
 
     public function user()
     {

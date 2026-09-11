@@ -63,8 +63,22 @@
                             @csrf
                             <button type="submit" style="color: red;">Hapus Permanen</button>
                         </form>
+                    @elseif(isset($activeMenu) && $activeMenu === 'arsip-lama')
+                        <a href="{{ url('/folder/'.$folder->id.'/download') }}">Download</a>
+                        <form action="{{ url('/folder/'.$folder->id.'/archive') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit">Pulihkan ke Aktif</button>
+                        </form>
+                        <form action="{{ url('/folder/'.$folder->id.'/delete') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit" style="color: red;">Hapus</button>
+                        </form>
                     @else
                         <a href="{{ url('/folder/'.$folder->id.'/download') }}">Download</a>
+                        <form action="{{ url('/folder/'.$folder->id.'/archive') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit">Pindahkan ke Arsip Lama</button>
+                        </form>
                         <form action="{{ url('/folder/'.$folder->id.'/delete') }}" method="POST" style="margin: 0;">
                             @csrf
                             <button type="submit">Hapus</button>
@@ -162,8 +176,22 @@
                             @csrf
                             <button type="submit" style="color: red;">Hapus Permanen</button>
                         </form>
+                    @elseif(isset($activeMenu) && $activeMenu === 'arsip-lama')
+                        <a href="{{ url('/files/'.$file->id.'/download') }}">Download</a>
+                        <form action="{{ url('/file/'.$file->id.'/archive') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit">Pulihkan ke Aktif</button>
+                        </form>
+                        <form action="{{ url('/file/'.$file->id.'/delete') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit" style="color: red;">Hapus</button>
+                        </form>
                     @else
                         <a href="{{ url('/files/'.$file->id.'/download') }}">Download</a>
+                        <form action="{{ url('/file/'.$file->id.'/archive') }}" method="POST" style="margin: 0;">
+                            @csrf
+                            <button type="submit">Pindahkan ke Arsip Lama</button>
+                        </form>
                         <form action="{{ url('/file/'.$file->id.'/delete') }}" method="POST" style="margin: 0;">
                             @csrf
                             <button type="submit">Hapus</button>
