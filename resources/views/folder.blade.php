@@ -49,6 +49,9 @@
                     } elseif ($source == 'sampah') {
                         $rootName = 'Sampah';
                         $rootUrl = url('/sampah');
+                    } elseif ($source == 'arsip-lama') {
+                        $rootName = 'Arsip Lama';
+                        $rootUrl = url('/arsip-lama');
                     }
                     $totalCrumbs = count($breadcrumbs);
                 @endphp

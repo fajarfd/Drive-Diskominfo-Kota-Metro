@@ -71,7 +71,7 @@
                         </form>
                         <form action="{{ url('/folder/'.$folder->id.'/delete') }}" method="POST" style="margin: 0;">
                             @csrf
-                            <button type="submit" style="color: red;">Hapus</button>
+                            <button type="submit">Hapus</button>
                         </form>
                     @else
                         <a href="{{ url('/folder/'.$folder->id.'/download') }}">Download</a>
@@ -184,7 +184,7 @@
                         </form>
                         <form action="{{ url('/file/'.$file->id.'/delete') }}" method="POST" style="margin: 0;">
                             @csrf
-                            <button type="submit" style="color: red;">Hapus</button>
+                            <button type="submit">Hapus</button>
                         </form>
                     @else
                         <a href="{{ url('/files/'.$file->id.'/download') }}">Download</a>
