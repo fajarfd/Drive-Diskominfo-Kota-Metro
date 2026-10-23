@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KOMSAFE — Sistem Manajemen Dokumen Instansi</title>
-    <meta name="description" content="KOMSAFE menyimpan, mengelola, dan mengamankan seluruh dokumen serta arsip instansi Anda dalam satu ruang kerja digital — dibangun khusus mengikuti kebutuhan lingkungan pemerintahan.">
+    <title>Komsafe — Sistem Manajemen Dokumen Instansi</title>
+    <meta name="description" content="Komsafe menyimpan, mengelola, dan mengamankan seluruh dokumen serta arsip instansi Anda dalam satu ruang kerja digital — dibangun khusus mengikuti kebutuhan lingkungan pemerintahan.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
         }
         .navbar-brand-text {
             font-size: 17px; font-weight: 800; color: var(--white);
-            letter-spacing: 2px; text-transform: uppercase;
+            letter-spacing: 0.5px;
             transform: translateY(2px);
         }
         .navbar-links {
@@ -218,9 +218,9 @@
 {{-- NAVBAR --}}
 <header class="navbar">
     <div class="navbar-inner">
-        <a href="/" class="navbar-brand" aria-label="KOMSAFE Beranda">
-            <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE" class="navbar-logo-img">
-            <span class="navbar-brand-text">KOMSAFE</span>
+        <a href="/" class="navbar-brand" aria-label="Komsafe Beranda">
+            <img src="{{ asset('images/nih.png') }}" alt="Logo Komsafe" class="navbar-logo-img">
+            <span class="navbar-brand-text">Komsafe</span>
         </a>
         <nav>
             <ul class="navbar-links">
@@ -245,7 +245,7 @@
                 <em>aman dalam satu tempat.</em>
             </h1>
             <p class="hero-desc">
-                KOMSAFE menyimpan, mengelola, dan mengamankan seluruh dokumen serta arsip instansi Anda dalam satu ruang kerja digital dibangun khusus mengikuti kebutuhan lingkungan pemerintahan.
+                Komsafe menyimpan, mengelola, dan mengamankan seluruh dokumen serta arsip instansi Anda dalam satu ruang kerja digital dibangun khusus mengikuti kebutuhan lingkungan pemerintahan.
             </p>
             <p class="hero-note">Dikelola secara internal oleh instansi Anda.</p>
         </div>
@@ -260,7 +260,7 @@
     <div class="section-inner">
         <p class="section-label">Fitur Unggulan</p>
         <h2 class="section-title">Semua yang instansi Anda butuhkan</h2>
-        <p class="section-desc">KOMSAFE menyediakan perangkat lengkap untuk menyimpan, mengelola, dan mengamankan dokumen instansi dalam satu ruang kerja digital.</p>
+        <p class="section-desc">Komsafe menyediakan perangkat lengkap untuk menyimpan, mengelola, dan mengamankan dokumen instansi dalam satu ruang kerja digital.</p>
         <div class="features-grid">
             <div class="feature-card">
                 <div class="fi-wrap"><img src="{{ asset('images/ikon-folder.png') }}" alt="Folder"></div>
@@ -301,7 +301,7 @@
     <div class="section-inner">
         <p class="section-label">Keamanan</p>
         <h2 class="section-title">Diamankan dari ujung ke ujung</h2>
-        <p class="section-desc">Fitur keamanan KOMSAFE mengikuti standar pengamanan data yang berlaku di lingkungan instansi pemerintah.</p>
+        <p class="section-desc">Fitur keamanan Komsafe mengikuti standar pengamanan data yang berlaku di lingkungan instansi pemerintah.</p>
         <div class="security-grid">
             <div>
                 <div class="si-wrap"><img src="{{ asset('images/gembok.png') }}" alt="Enkripsi"></div>
@@ -385,7 +385,7 @@
 
 {{-- FOOTER --}}
 <footer class="footer">
-    <p>© {{ date('Y') }} KOMSAFE — Sistem Manajemen Dokumen Instansi</p>
+    <p>© {{ date('Y') }} Komsafe — Sistem Manajemen Dokumen Instansi</p>
 </footer>
 
 <script>

@@ -30,3 +30,6 @@ Thumbs.db
 *.py
 temp_*.txt
 dom.txt
+
+# Konfigurasi AI agent (tidak perlu masuk ke repo)
+.agents/

@@ -8,20 +8,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: #1c2a47;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: #1c2a47;
             position: relative;
             overflow: hidden;
         }
@@ -29,11 +24,9 @@
         body::before {
             content: '';
             position: absolute;
-            top: -150px;
-            right: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            top: -150px; right: -100px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
@@ -41,77 +34,108 @@
         body::after {
             content: '';
             position: absolute;
-            bottom: -180px;
-            left: -80px;
-            width: 550px;
-            height: 550px;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.08) 0%, transparent 70%);
+            bottom: -180px; left: -80px;
+            width: 550px; height: 550px;
+            background: radial-gradient(circle, rgba(0,0,0,0.08) 0%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
         }
 
-        .login-wrapper {
+        /* ── CARD ── */
+        .card {
             position: relative;
             z-index: 1;
-        }
-
-        .card {
-            width: 350px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 880px;
+            min-height: 420px;
             max-width: calc(100vw - 32px);
-            padding: 32px 30px 16px;
             background: #ffffff;
             border-radius: 4px;
-            box-shadow: none;
         }
 
-        .brand-logo span {
-            font-size: 17px;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            line-height: 1.6;
-            transform: translateY(2px);
+        /* ── KIRI ── */
+        .card-left {
+            position: relative;
+            flex: 0 0 380px;
+            padding: 105px 40px 70px;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card h2 {
-            font-size: 22px;
+        /* Logo + Nama: absolut di pojok kiri atas card */
+        .brand {
+            position: absolute;
+            top: 32px;
+            left: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+        }
+
+        .brand img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1c2a47;
+            letter-spacing: 0.5px;
+        }
+
+        .card-left h1 {
+            font-size: 26px;
             font-weight: 700;
             color: #1f1f1f;
-            margin-bottom: 8px;
-            text-align: center;
+            margin-bottom: 14px;
+            line-height: 1.2;
+            margin-top: -3px;
         }
 
-        .card .subtitle {
+        .card-left .desc {
             font-size: 13px;
             color: #555555;
-            text-align: center;
-            margin-bottom: 28px;
-            line-height: 1.5;
+            line-height: 1.7;
         }
 
-        .success {
-            color: #059669;
+        /* ── KANAN ── */
+        .card-right {
+            flex: 1;
+            padding: 105px 44px 70px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Alert */
+        .alert-success {
             font-size: 13px;
-            margin-bottom: 16px;
-            padding: 10px 14px;
+            color: #059669;
             background: #ecfdf5;
             border: 1px solid #a7f3d0;
             border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
         }
 
-        .error {
-            color: #dc2626;
+        .alert-error {
             font-size: 13px;
-            margin-bottom: 16px;
-            padding: 10px 14px;
+            color: #dc2626;
             background: #fef2f2;
             border: 1px solid #fecaca;
             border-radius: 4px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
         }
 
+        /* Input */
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 56px;
         }
 
         .input-group label {
@@ -134,28 +158,49 @@
             border-radius: 0;
             outline: none;
             transition: all 0.25s ease;
-            box-sizing: border-box;
             box-shadow: none;
         }
 
-        .input-group input::placeholder {
-            color: #9ca3af;
-        }
+        .input-group input::placeholder { color: #9ca3af; }
 
-        /* Override browser autofill background */
         .input-group input:-webkit-autofill,
-        .input-group input:-webkit-autofill:hover, 
-        .input-group input:-webkit-autofill:focus, 
+        .input-group input:-webkit-autofill:hover,
+        .input-group input:-webkit-autofill:focus,
         .input-group input:-webkit-autofill:active {
             -webkit-box-shadow: 0 0 0 30px #f0f2f5 inset !important;
             -webkit-text-fill-color: #1f2937 !important;
             transition: background-color 5000s ease-in-out 0s;
         }
 
-        .btn-submit {
-            width: 100%;
-            height: 40px;
+        /* Baris tombol: kembali (kiri) + kirim (kanan) */
+        .btn-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .btn-back {
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #3730a3;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
             padding: 0;
+            transition: color 0.2s;
+        }
+
+        .btn-back:hover {
+            color: #4338ca;
+            text-decoration: underline;
+        }
+
+        .btn-submit {
+            height: 40px;
+            padding: 0 24px;
             font-family: 'Inter', sans-serif;
             font-size: 14px;
             font-weight: 600;
@@ -166,78 +211,78 @@
             cursor: pointer;
             transition: all 0.3s ease;
             letter-spacing: 0.3px;
-            box-shadow: none;
+            white-space: nowrap;
         }
 
-        .btn-submit:hover {
-            background: #4338ca;
-            box-shadow: none;
-        }
+        .btn-submit:hover { background: #4338ca; }
+        .btn-submit:active { background: #312e81; }
 
-        .btn-submit:active {
-            transform: translateY(0);
-            background: #312e81;
-            box-shadow: none;
-        }
-
-        .back-link {
-            text-align: center;
-            font-size: 13px;
-            color: #6b7280;
-            margin-top: 22px;
-        }
-
-        .back-link a {
-            color: #3730a3;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .back-link a:hover {
-            color: #4338ca;
-            text-decoration: underline;
-        }
-
-        @media (max-width: 480px) {
-            .login-wrapper {
-                margin: 16px;
-            }
-            .card {
-                padding: 30px 24px;
-            }
+        /* ── RESPONSIVE ── */
+        @media (max-width: 640px) {
+            .card { flex-direction: column; }
+            .card-left { flex: unset; padding: 36px 28px 24px; }
+            .card-right { padding: 24px 28px 40px; }
+            .btn-row { flex-direction: column-reverse; align-items: stretch; }
+            .btn-submit { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <a href="/" class="brand-logo" aria-label="KOMSAFE Beranda">
-        <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE">
-        <span>KOMSAFE</span>
-    </a>
-    <div class="login-wrapper">
-        <div class="card">
-            <h2>Lupa Password</h2>
-            <p class="subtitle">Masukkan alamat email akun Anda. Kami akan mengirimkan kode verifikasi untuk mereset kata sandi.</p>
+
+    <div class="card">
+
+        {{-- KIRI: Logo (horizontal) + Judul + Deskripsi --}}
+        <div class="card-left">
+            <div class="brand">
+                <img src="{{ asset('images/nih.png') }}" alt="Logo Komsafe">
+                <span class="brand-name">Komsafe</span>
+            </div>
+
+            <h1>Lupa Password</h1>
+
+            <p class="desc">
+                Masukkan alamat email akun Anda. Kami akan mengirimkan kode verifikasi untuk mereset kata sandi.
+            </p>
+        </div>
+
+        {{-- KANAN: Form --}}
+        <div class="card-right">
 
             @if(session('status'))
-                <div class="success">{{ session('status') }}</div>
+                <div class="alert-success">{{ session('status') }}</div>
             @endif
 
             @if($errors->any())
-                <div class="error">{{ $errors->first() }}</div>
+                <div class="alert-error">{{ $errors->first() }}</div>
             @endif
 
             <form action="{{ route('password.email') }}" method="POST" autocomplete="off">
                 @csrf
+
                 <div class="input-group">
-                    <label>Email</label>
-                    <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required autocomplete="off">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value="{{ old('email') }}"
+                        placeholder="Masukkan alamat email Anda"
+                        required
+                        autocomplete="off"
+                    >
                 </div>
-                <button type="submit" class="btn-submit">Kirim Kode Verifikasi</button>
+
+                {{-- Baris bawah: Kembali ke Login (kiri) | Kirim Kode Verifikasi (kanan) --}}
+                <div class="btn-row">
+                    <a href="{{ route('login') }}" class="btn-back">Kembali ke Login</a>
+                    <button type="submit" class="btn-submit">Kirim Kode Verifikasi</button>
+                </div>
+
             </form>
 
-            <p class="back-link"><a href="{{ route('login') }}">Kembali ke Login</a></p>
         </div>
+
     </div>
+
 </body>
 </html>

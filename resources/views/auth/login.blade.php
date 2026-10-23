@@ -88,8 +88,7 @@
             font-size: 17px;
             font-weight: 800;
             color: #ffffff;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
             line-height: 1.6;
             transform: translateY(2px);
         }
@@ -292,9 +291,9 @@
     </style>
 </head>
 <body>
-    <a href="/" class="brand-logo" aria-label="KOMSAFE Beranda">
-        <img src="{{ asset('images/nih.png') }}" alt="Logo KOMSAFE">
-        <span>KOMSAFE</span>
+    <a href="/" class="brand-logo" aria-label="Komsafe Beranda">
+        <img src="{{ asset('images/nih.png') }}" alt="Logo Komsafe">
+        <span>Komsafe</span>
     </a>
     <div class="login-wrapper">
         <div class="card">
@@ -308,7 +307,7 @@
                 </div>
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" name="password" placeholder="Masukkan password" required autocomplete="new-password" readonly onfocus="this.removeAttribute('readonly');">
+                    <input type="password" name="password" placeholder="Masukkan password" required autocomplete="current-password">
                 </div>
                 
                 <div class="error-wrapper">
