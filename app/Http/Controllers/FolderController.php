@@ -68,10 +68,12 @@ class FolderController extends Controller
 
         $folderQuery = Folder::where('user_id', Auth::id())
             ->where('parent_id', $folder->id)
+            ->where('is_archived', $folder->is_archived)
             ->orderBy('name', $order);
 
         $fileQuery = \App\Models\FileItem::where('user_id', Auth::id())
             ->where('folder_id', $folder->id)
+            ->where('is_archived', $folder->is_archived)
             ->orderBy('name', $order);
 
         if ($isTrashed) {
@@ -113,6 +115,16 @@ class FolderController extends Controller
         $folder->save();
 
         return back();
+    }
+
+    public function toggleArchiveFolder($id)
+    {
+        $folder = Folder::where('user_id', Auth::id())->findOrFail($id);
+        $folder->is_archived = !$folder->is_archived;
+        $folder->save();
+
+        $msg = $folder->is_archived ? 'Folder dipindahkan ke arsip lama.' : 'Folder dipulihkan ke aktif.';
+        return back()->with('success', $msg);
     }
 
     public function downloadFolder($id)

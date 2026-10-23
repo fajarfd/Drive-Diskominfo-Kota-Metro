@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/terbaru', [DashboardController::class, 'terbaru'])->name('terbaru');
     Route::get('/favorit', [DashboardController::class, 'favorit'])->name('favorit');
+    Route::get('/arsip-lama', [DashboardController::class, 'arsipLama'])->name('arsip-lama');
     
     // --- FOLDER ACTIONS ---
     Route::post('/folder/create', [FolderController::class, 'storeFolder']);
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/folder/show/{id}', [FolderController::class, 'showFolder']);
     Route::post('/folder/{id}/delete', [FolderController::class, 'deleteFolder']);
     Route::post('/folder/{id}/favorite', [FolderController::class, 'toggleFavoriteFolder']);
+    Route::post('/folder/{id}/archive', [FolderController::class, 'toggleArchiveFolder']);
     Route::get('/folder/{id}/download', [FolderController::class, 'downloadFolder']);
     
     // --- FILE ACTIONS ---
@@ -55,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/files/{id}/download', [FileController::class, 'downloadFile']);
     Route::post('/file/{id}/delete', [FileTrashController::class, 'deleteFile']);
     Route::post('/file/{id}/favorite', [FileController::class, 'toggleFavoriteFile']);
+    Route::post('/file/{id}/archive', [FileController::class, 'toggleArchiveFile']);
 
     // --- SAMPAH ---
     Route::get('/sampah', [TrashController::class, 'sampah'])->name('sampah');

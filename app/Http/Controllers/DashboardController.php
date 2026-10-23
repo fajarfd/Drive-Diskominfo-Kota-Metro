@@ -14,8 +14,8 @@ class DashboardController extends Controller
         $type     = $request->get('type', '');
         $modified = $request->get('modified', '');
 
-        $folderQuery = \App\Models\Folder::where('user_id', Auth::id())->whereNull('parent_id');
-        $fileQuery   = \App\Models\FileItem::where('user_id', Auth::id())->whereNull('folder_id');
+        $folderQuery = \App\Models\Folder::where('user_id', Auth::id())->whereNull('parent_id')->where('is_archived', false);
+        $fileQuery   = \App\Models\FileItem::where('user_id', Auth::id())->whereNull('folder_id')->where('is_archived', false);
 
         if ($keyword) {
             $folderQuery->where('name', 'like', '%' . $keyword . '%');
@@ -59,6 +59,7 @@ class DashboardController extends Controller
         $modified = $request->get('modified', '');
 
         $fileQuery = \App\Models\FileItem::where('user_id', Auth::id())
+            ->where('is_archived', false)
             ->orderBy('created_at', 'desc');
 
         if ($keyword) {
@@ -94,10 +95,12 @@ class DashboardController extends Controller
 
         $folderQuery = \App\Models\Folder::where('user_id', Auth::id())
             ->where('is_favorite', true)
+            ->where('is_archived', false)
             ->orderBy('name', $order);
 
         $fileQuery = \App\Models\FileItem::where('user_id', Auth::id())
             ->where('is_favorite', true)
+            ->where('is_archived', false)
             ->orderBy('name', $order);
 
         if ($modified) {
@@ -125,5 +128,32 @@ class DashboardController extends Controller
         }
 
         return view('favorit', compact('folders', 'files', 'order'));
+    }
+    public function arsipLama(Request $request)
+    {
+        $order    = $request->get('order', 'asc');
+        $type     = $request->get('type', '');
+        $modified = $request->get('modified', '');
+
+        $folderQuery = \App\Models\Folder::where('user_id', Auth::id())
+            ->where('is_archived', true)
+            ->orderBy('name', $order);
+
+        $fileQuery = \App\Models\FileItem::where('user_id', Auth::id())
+            ->where('is_archived', true)
+            ->orderBy('name', $order);
+
+        if ($type == 'folder') {
+            $folders = $folderQuery->get();
+            $files   = collect([]);
+        } elseif ($type == 'file') {
+            $folders = collect([]);
+            $files   = $fileQuery->get();
+        } else {
+            $folders = $folderQuery->get();
+            $files   = $fileQuery->get();
+        }
+
+        return view('arsip-lama', compact('folders', 'files', 'order'));
     }
 }

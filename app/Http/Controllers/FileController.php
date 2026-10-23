@@ -168,4 +168,14 @@ class FileController extends Controller
         $file->save();
         return back()->with('success', 'Status favorit file diperbarui.');
     }
+
+    public function toggleArchiveFile($id)
+    {
+        $file              = FileItem::where('user_id', Auth::id())->findOrFail($id);
+        $file->is_archived = !$file->is_archived;
+        $file->save();
+        
+        $msg = $file->is_archived ? 'File dipindahkan ke arsip lama.' : 'File dipulihkan ke aktif.';
+        return back()->with('success', $msg);
+    }
 }

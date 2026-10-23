@@ -55,6 +55,10 @@
             <img src="{{ asset('images/dibintangi.png') }}" alt="Favorit">
             Favorit
         </a>
+        <a href="{{ url('/arsip-lama') }}" class="sidebar-menu-item {{ ($activeMenu ?? 'drive') === 'arsip-lama' ? 'active' : '' }}">
+            <img src="{{ asset('images/arsip_lama.png') }}" alt="Arsip Lama">
+            Arsip Lama
+        </a>
         <a href="{{ url('/sampah') }}" class="sidebar-menu-item {{ ($activeMenu ?? 'drive') === 'sampah' ? 'active' : '' }}">
             <img src="{{ asset('images/sampah.png') }}" alt="Sampah">
             Sampah
