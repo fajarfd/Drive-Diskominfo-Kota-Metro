@@ -1,7 +1,7 @@
 <div class="sidebar">
-    <div style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 15px; height: 60px; padding: 0 34px; box-sizing: border-box; background-color: #1c2a47;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; gap: 15px; height: 60px; padding: 0 34px; box-sizing: border-box; background-color: #f0f1f4;">
         <img src="{{ asset('images/nih.png') }}" alt="Logo Kominfo" style="width: 28px; height: 28px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2)); flex-shrink: 0;">
-        <h2 class="logo-title" style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; color: white;">Komsafe</h2>
+        <h2 class="logo-title" style="margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0.5px; color: #1c2a47;">Komsafe</h2>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 0;">
