@@ -31,7 +31,22 @@
                         from { transform: translateY(100px); opacity: 0; }
                         to { transform: translateY(0); opacity: 1; }
                     }
+                    @keyframes slideDown {
+                        from { transform: translateY(0); opacity: 1; }
+                        to { transform: translateY(100px); opacity: 0; }
+                    }
                 </style>
+                <script>
+                    (function() {
+                        var toast = document.getElementById('toast-notification');
+                        if (toast) {
+                            setTimeout(function() {
+                                toast.style.animation = 'slideDown 0.4s ease-in forwards';
+                                setTimeout(function() { toast.style.display = 'none'; }, 400);
+                            }, 4000);
+                        }
+                    })();
+                </script>
             @endif
 
             <!-- JUDUL HALAMAN UTAMA (BREADCRUMBS) -->
